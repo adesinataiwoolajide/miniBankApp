@@ -70,9 +70,10 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="officers" items="${officer}" >
+                                <c:forEach var="officers" items="${officer}" varStatus="counter">
                                     <tr>
-                                        <td>
+
+                                        <td>${counter.count}
                                             <a href="/administrator/account_officer/delete/${officers.officerid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/account_officer/edit/${officers.officerid}" class="btn btn-success"

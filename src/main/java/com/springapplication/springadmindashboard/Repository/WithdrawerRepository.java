@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WithdrawerRepository extends JpaRepository <Withdrawer, Long> {
 
-    Withdrawer findByWithdrawerid(Long withdrawerid);
+    //Withdrawer findByWithdrawerid(Long withdrawerid);
+    //Withdrawer findByAccountAccountId(Long account_id);
 }

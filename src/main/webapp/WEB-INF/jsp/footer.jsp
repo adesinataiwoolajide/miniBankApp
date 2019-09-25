@@ -8,6 +8,10 @@
     function confirmToEdit(){
         return confirm("Click okay to Edit and Cancel to Stop");
     }
+</script><script>
+    function confirmToBlock(){
+        return confirm("Click okay to Block and Cancel to Stop");
+    }
 </script>
 <a href="" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
 

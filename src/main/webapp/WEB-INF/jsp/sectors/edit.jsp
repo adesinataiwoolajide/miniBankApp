@@ -71,9 +71,10 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="sectors" items="${sector}" >
+                                <c:forEach var="sectors" items="${sector}" varStatus="counter">
                                     <tr>
                                         <td>
+                                            ${counter.count}
                                             <a href="/administrator/sectors/delete/${sectors.sectorid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/sectors/edit/${sectors.sectorid}" class="btn btn-success"

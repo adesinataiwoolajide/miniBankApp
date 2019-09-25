@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
@@ -14,12 +15,13 @@ import java.security.Principal;
 public class DashboardController {
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public ModelAndView loadAdmin()
+    public ModelAndView loadAdmin(RedirectAttributes redirectAttributes)
     {
         User user = new User();
         ModelAndView modelAndView = new ModelAndView("dashboard");
         modelAndView.addObject("user", user.getUsername());
-        System.out.println();
+        redirectAttributes.addFlashAttribute("success",
+                 user.getUsername() + " Welcome To Admin Dashboard");
         return modelAndView;
     }
 

@@ -11,8 +11,8 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="./">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/administrator/account_category/">Add Account Category</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">List of Saved Account Categories</li>
+                    <li class="breadcrumb-item"><a href="/administrator/sectors/">Add Sectors</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">List of Saved Sectors</li>
                 </ol>
             </div>
         </div>
@@ -69,9 +69,10 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="sectors" items="${sector}" >
+                                <c:forEach var="sectors" items="${sector}" varStatus="counter">
                                     <tr>
                                         <td>
+                                            ${counter.count}
                                             <a href="/administrator/sector/delete/${sectors.sectorid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/sector/edit/${sectors.sectorid}" class="btn btn-success"

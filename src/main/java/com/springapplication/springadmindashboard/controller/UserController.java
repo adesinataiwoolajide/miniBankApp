@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("administrator")
@@ -31,21 +32,42 @@ public class UserController {
         return modelAndView;
     }
 
+    private boolean checkEmail(String username){
+        User user = userRepo.findByUsername(username);
+        if(user != null){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
     @RequestMapping(value = "/users/save", method = RequestMethod.POST)
     public  ModelAndView store(@RequestParam("fullname") String name,
                                @RequestParam("username") String username,
                                @RequestParam("password") String password,
-                               @RequestParam("role") String role)
+                               @RequestParam("role") String role,
+                               RedirectAttributes redirectAttributes)
     {
         User user  = new User();
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/users/");
-        user.setUsername(username);
-        user.setName(name);
-        user.setPassword(passwordEncoder.encode(password));
-        user.setStatus(true);
-        user.setRole(role);
-        userRepo.save(user);
-        return modelAndView;
+        if(checkEmail(username)){
+
+            redirectAttributes.addFlashAttribute("email",
+                    username + " is in use by another user");
+            return modelAndView;
+
+        }else{
+            user.setUsername(username);
+            user.setName(name);
+            user.setPassword(passwordEncoder.encode(password));
+            user.setStatus(true);
+            user.setRole(role);
+            redirectAttributes.addFlashAttribute("success",
+                    " You have added " + username + " Successfully");
+            userRepo.save(user);
+            return modelAndView;
+        }
+
 
     }
 
@@ -58,8 +80,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "users/delete/{user_id}", method = RequestMethod.GET)
-    public ModelAndView destroy(@PathVariable("user_id") Long user_id){
+    public ModelAndView destroy(@PathVariable("user_id") Long user_id, RedirectAttributes redirectAttributes){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/users/");
+        User user = (User) userRepo.findById(user_id).orElse(null);
+        redirectAttributes.addFlashAttribute("success",
+                  " You have deleted " + user.getUsername() + "Successfully");
         userRepo.deleteById(user_id);
         return modelAndView;
 
@@ -70,7 +95,8 @@ public class UserController {
                                 @RequestParam("fullname") String name,
                                @RequestParam("username") String username,
                                @RequestParam("password") String password,
-                               @RequestParam("role") String role)
+                               @RequestParam("role") String role,
+                                RedirectAttributes redirectAttributes)
     {
 
         User user = (User) userRepo.findById(user_id).orElse(null);
@@ -88,6 +114,8 @@ public class UserController {
 
         user.setStatus(true);
         user.setRole(role);
+        redirectAttributes.addFlashAttribute("success",
+                " You have updated " + user.getUsername() + " Successfully");
         userRepo.save(user);
         return modelAndView;
 

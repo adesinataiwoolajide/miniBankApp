@@ -80,9 +80,9 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="account_categories" items="${account_category}" >
+                                <c:forEach var="account_categories" items="${account_category}" varStatus="counter">
                                     <tr>
-                                        <td>
+                                        <td>${counter.count}
                                             <a href="/administrator/account_category/delete/${account_categories.accountcategoryid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/account_category/edit/${account_categories.accountcategoryid}" class="btn btn-success"

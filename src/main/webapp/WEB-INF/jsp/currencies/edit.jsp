@@ -18,6 +18,9 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+                <h5><p style="color: red" align="center">${error}</p>
+                    <p style="color: green" align="center">${success}</p>
+                </h5>
                 <div class="card">
                     <div class="card-header"><i class="fa fa-table"></i> Please Fill The Below Form To Edit Currency </div>
                     <div class="card-body">
@@ -76,9 +79,10 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="currencies" items="${currenc}" >
+                                <c:forEach var="currencies" items="${currenc}" varStatus="counter" >
                                     <tr>
                                         <td>
+                                            ${counter.count}
                                             <a href="/administrator/currency/delete/${currencies.currencyid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/currency/edit/${currencies.currencyid}" class="btn btn-success"

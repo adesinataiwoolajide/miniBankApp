@@ -74,8 +74,9 @@ public class AccountCategoryController {
     @RequestMapping(value = "account_category/delete/{accountcategoryid}", method = RequestMethod.GET)
     public ModelAndView destroy(@PathVariable("accountcategoryid") Long accountcategoryid, RedirectAttributes redirectAttributes){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/account_category/");
+        AccountCategory accountCategory = (AccountCategory) accountCategoryRepository.findById(accountcategoryid).orElse(null);
         redirectAttributes.addFlashAttribute("success",
-                "You Have Deleted The Account Category Successfully");
+                "You Have Deleted " +accountCategory.getAccountcategoryname() +  " From The Account Category Successfully");
         accountCategoryRepository.deleteById(accountcategoryid);
         return modelAndView;
     }
@@ -105,7 +106,7 @@ public class AccountCategoryController {
         accountCategory.setAccountcategoryname(accountcategoryname);
         accountCategory.setAmount(amount);
         redirectAttributes.addFlashAttribute("success",
-                "You Have Updated" + accountcategoryname +  "The Account Category Successfully");
+                "You Have Updated " + accountcategoryname +  " The Account Category Successfully");
         accountCategoryRepository.save(accountCategory);
         return modelAndView;
 

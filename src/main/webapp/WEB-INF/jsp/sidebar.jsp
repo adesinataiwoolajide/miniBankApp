@@ -32,15 +32,15 @@
         <li class="sidebar-header">MAIN NAVIGATION</li>
         <li><a href="/administrator/dashboard/" class="waves-effect"><i class="fa fa-database text-danger"></i> <span>Dashboard</span></a></li>
         <li><a href="/administrator/users/" class="waves-effect"><i class="fa fa-users text-danger"></i> <span>Users</span></a></li>
-        <li><a href="/administrator/account_category/" class="waves-effect"><i class="fa fa-cogs text-danger"></i> <span>Account Category</span></a></li>
-        <li><a href="/administrator/currencies/" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Currency</span></a></li>
-        <li><a href="/administrator/sectors/" class="waves-effect"><i class="fa fa-sitemap text-danger"></i> <span>Sector</span></a></li>
+        <li><a href="/administrator/account_category/" class="waves-effect"><i class="fa fa-cogs text-danger"></i> <span>Account Categories</span></a></li>
+        <li><a href="/administrator/currencies/" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Currencies</span></a></li>
+        <li><a href="/administrator/sectors/" class="waves-effect"><i class="fa fa-sitemap text-danger"></i> <span>Sectors</span></a></li>
         <li><a href="/administrator/customers/" class="waves-effect"><i class="fa fa-briefcase text-danger"></i> <span>Customers</span></a></li>
-        <li><a href="/administrator/account_officers/" class="waves-effect"><i class="fa fa-users text-danger"></i> <span>Account Officer</span></a></li>
-        <li><a href="/administrator/accounts/" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Account</span></a></li>
+        <li><a href="/administrator/account_officers/" class="waves-effect"><i class="fa fa-users text-danger"></i> <span>Account Officers</span></a></li>
+        <li><a href="/administrator/accounts/" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Accounts</span></a></li>
         <li><a href="/administrator/transactions/" class="waves-effect"><i class="fa fa-bank text-danger"></i> <span>Transactions</span></a></li>
         <li><a href="/administrator/deposite/" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Deposite</span></a></li>
-        <li><a href="" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Withdraw</span></a></li>
+        <li><a href="/administrator/withdrawer/" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Withdrawer</span></a></li>
         <li><a href="" class="waves-effect"><i class="fa fa-money text-danger"></i> <span>Statements</span></a></li>
 
 

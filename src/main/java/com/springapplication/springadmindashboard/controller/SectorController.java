@@ -51,7 +51,7 @@ public class SectorController {
             return modelAndView;
         }else{
             redirectAttributes.addFlashAttribute("success",
-                    "You Have Added "  + sectorname + " The Sector Name Successfully");
+                    "You Have Added "  + sectorname + " To The Sector List Successfully");
             sectorRepository.save(sector);
             return modelAndView;
         }

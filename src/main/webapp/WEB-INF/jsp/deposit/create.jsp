@@ -20,6 +20,9 @@
 
         <div class="row">
             <div class="col-lg-12">
+                <h5><p style="color: red" align="center">${error}</p>
+                    <p style="color: green" align="center">${success}</p>
+                </h5>
                 <div class="card">
                     <div class="card-header"><i class="fa fa-table"></i> List of Saved Customer Accounts</div>
                     <div class="card-body">
@@ -47,9 +50,9 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="accounts" items="${account}" >
+                                <c:forEach var="accounts" items="${account}" varStatus="counter">
                                     <tr>
-                                        <td>
+                                        <td>${counter.count}
                                             <a href="/administrator/deposite/create/${accounts.accountnumber}/${accounts.accountid}/${accounts.customer.customerid}/"
                                                class="btn btn-outline-danger"
                                                onclick=""><i class="fa fa-money"></i>Deposite</a>

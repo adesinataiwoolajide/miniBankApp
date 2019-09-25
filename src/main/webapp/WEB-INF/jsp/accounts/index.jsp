@@ -18,6 +18,9 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+                <h5><p style="color: red" align="center">${error}</p>
+                    <p style="color: green" align="center">${success}</p>
+                </h5>
                 <div class="card">
                     <div class="card-header"><i class="fa fa-table"></i> Please Fill The Below Form To Create New Customer Account </div>
                     <div class="card-body">
@@ -131,9 +134,9 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="accounts" items="${account}" >
+                                <c:forEach var="accounts" items="${account}" varStatus="counter">
                                     <tr>
-                                        <td>
+                                        <td>${counter.count}
                                             <a href="/administrator/account/delete/${accounts.accountid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/account/edit/${accounts.accountid}" class="btn btn-success"

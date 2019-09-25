@@ -20,6 +20,9 @@
 
         <div class="row">
             <div class="col-lg-12">
+                <h5><p style="color: red" align="center">${error}</p>
+                    <p style="color: green" align="center">${success}</p>
+                </h5>
                 <div class="card">
                     <div class="card-header"><i class="fa fa-table"></i> List of Saved Customer Transactions</div>
                     <div class="card-body">
@@ -47,14 +50,27 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="transaction" items="${transactions}" >
+                                <c:forEach var="transaction" items="${transactions}" varStatus="counter">
                                     <tr>
-                                        <td>
-
+                                        <td>${counter.count}
                                         </td>
                                         <td>${transaction.account.accountnumber}</td>
-                                        <td>${transaction.transactiontype}</td>
-                                        <td>&#8358;${transaction.amount}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${transaction.transactiontype == 'DR'}">
+                                                   <p style="color: red">DR</p>
+                                                </c:when>
+                                                <c:when test="${transaction.transactiontype == 'CR'}">
+                                                    <p style="color: green">CR</p>
+                                                </c:when>
+                                                <c:otherwise>
+
+                                                </c:otherwise>
+                                            </c:choose>
+
+                                        </td>
+                                        <td><fmt:formatNumber value = "${transaction.amount}" type = "currency" currencySymbol="&#8358;"/>
+                                        </td>
                                         <td>${transaction.customer.customername}</td>
 
                                     </tr>

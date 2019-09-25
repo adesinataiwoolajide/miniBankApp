@@ -5,7 +5,9 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-
+        <h5><p style="color: red" align="center">${error}</p>
+            <p style="color: green" align="center">${success}</p>
+        </h5>
         <div class="card mt-3 gradient-deepblue">
             <div class="card-content">
                 <div class="row row-group m-0">

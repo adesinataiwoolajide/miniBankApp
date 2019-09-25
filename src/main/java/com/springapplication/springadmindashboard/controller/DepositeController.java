@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.DateFormat;
 
@@ -61,7 +62,8 @@ public class DepositeController {
                              @RequestParam("sendername") String sendername,
                              @RequestParam("senderphone") Long senderphone,
                              @RequestParam("customername") String customername,
-                             @RequestParam("customerid") Long customerid){
+                             @RequestParam("customerid") Long customerid,
+                             RedirectAttributes redirectAttributes){
 
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/deposite/list");
         CustomerBalance customerBalance = new CustomerBalance();
@@ -100,7 +102,8 @@ public class DepositeController {
             depositeRepository.save(deposite);
             transactionRepository.save(transaction);
             customerBalanceRepository.save(customerBalance);
-
+            redirectAttributes.addFlashAttribute("success",
+                    "You Have Deposited " + amount  + " Into " + customername + " Account Successfully");
             return modelAndView;
 
         }else{
@@ -116,6 +119,8 @@ public class DepositeController {
             depositeRepository.save(deposite);
             transactionRepository.save(transaction);
             customerBalanceRepository.save(updateBalance);
+            redirectAttributes.addFlashAttribute("success",
+                    "You Have Updated " + customername  + " Account With " + amount + " Successfully");
             return  modelAndView;
 
         }
@@ -131,9 +136,11 @@ public class DepositeController {
     }
 
     @RequestMapping(value = "deposite/delete/{depositeid}", method = RequestMethod.GET)
-    public ModelAndView destroy(@PathVariable("depositeid") Long depositeid){
+    public ModelAndView destroy(@PathVariable("depositeid") Long depositeid, RedirectAttributes redirectAttributes){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/deposite/list");
         depositeRepository.deleteById(depositeid);
+        redirectAttributes.addFlashAttribute("success",
+                "You Have Deleted The Deposite Successfully");
         return modelAndView;
     }
 

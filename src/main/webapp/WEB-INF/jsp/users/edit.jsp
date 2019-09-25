@@ -96,9 +96,10 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="user" items="${users}" >
+                                <c:forEach var="user" items="${users}" varStatus="counter">
                                     <tr>
                                         <td>
+                                                ${counter.count}
                                             <a href="/administrator/users/delete/${user.user_id}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/users/edit/${user.user_id}" class="btn btn-success"

@@ -18,6 +18,9 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+                <h5><p style="color: red" align="center">${error}</p>
+                    <p style="color: green" align="center">${success}</p>
+                </h5>
                 <div class="card">
                     <div class="card-header"><i class="fa fa-table"></i> Please Fill The Below Form To Add New User </div>
                     <div class="card-body">
@@ -93,13 +96,16 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="user" items="${users}" >
+                                <c:forEach var="user" items="${users}" varStatus="counter">
                                 <tr>
                                     <td>
+                                        ${counter.count}
                                         <a href="/administrator/users/delete/${user.user_id}" class="btn btn-danger"
                                            onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                         <a href="/administrator/users/edit/${user.user_id}" class="btn btn-success"
                                            onclick="return(confirmToEdit());"><i class="fa fa-pencil"></i></a>
+
+
                                     </td>
                                     <td>${user.name}</td>
                                     <td>${user.username}</td>

@@ -162,9 +162,10 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="customers" items="${customer}" >
+                                <c:forEach var="customers" items="${customer}" varStatus="counter">
                                     <tr>
                                         <td>
+                                            ${counter.count}
                                             <a href="/administrator/customer/delete/${customers.customerid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/customer/edit/${customers.customerid}" class="btn btn-success"

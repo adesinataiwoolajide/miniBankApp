@@ -80,9 +80,10 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach var="currencies" items="${currency}" >
+                                <c:forEach var="currencies" items="${currency}" varStatus="counter">
                                     <tr>
                                         <td>
+                                            ${counter.count}
                                             <a href="/administrator/currency/delete/${currencies.currencyid}" class="btn btn-danger"
                                                onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
                                             <a href="/administrator/currency/edit/${currencies.currencyid}" class="btn btn-success"

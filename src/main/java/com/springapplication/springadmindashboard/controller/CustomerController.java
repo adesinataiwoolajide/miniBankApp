@@ -79,6 +79,7 @@ public class CustomerController {
     @RequestMapping(value = "customer/delete/{customerid}", method = RequestMethod.GET)
     public ModelAndView destroy(@PathVariable("customerid") Long customerid, RedirectAttributes redirectAttributes){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/customers/");
+
         Customer customer = (Customer) customerRepository.findById(customerid).orElse(null);
         redirectAttributes.addFlashAttribute("success",
                 "You Have Deleted "  + customer.getCustomername() + " From The Customer List Successfully");

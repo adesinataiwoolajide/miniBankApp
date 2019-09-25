@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Random;
 
@@ -52,7 +53,8 @@ public class AccountController {
             @RequestParam("customerid") Long customerid,
             @RequestParam("currencyid") Long currencyid,
             @RequestParam("accountcategoryid") Long accountcategoryid,
-            @RequestParam("officerid") Long officerid
+            @RequestParam("officerid") Long officerid,
+            RedirectAttributes redirectAttributes
     ){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/accounts/");
 
@@ -66,8 +68,7 @@ public class AccountController {
         AccountOfficer accountOfficer = new AccountOfficer();
         accountOfficer.setOfficerid(officerid);
 
-//        Random random = new Random();
-//        Long acccountnumber =  random.nextLong();
+//
         Long leftLimit = 10000000L;
         Long rightLimit = 90000000L;
         Long accountnumber = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
@@ -77,6 +78,8 @@ public class AccountController {
         account.setCurrency(currency);
         account.setAccountnumber(accountnumber);
         modelAndView.addObject("account", accountRepository.findAll());
+        redirectAttributes.addFlashAttribute("success",
+                "You Have Created "  + accountnumber + " Successfully");
         accountRepository.save(account);
         return modelAndView;
 
@@ -89,7 +92,8 @@ public class AccountController {
             @RequestParam("currencyid") Long currencyid,
             @RequestParam("accountcategoryid") Long accountcategoryid,
             @RequestParam("officerid") Long officerid,
-            @RequestParam("accountnumber") Long acccountnumber
+            @RequestParam("accountnumber") Long acccountnumber,
+            RedirectAttributes redirectAttributes
     ){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/accounts/");
 
@@ -110,14 +114,19 @@ public class AccountController {
         account.setCurrency(currency);
         account.setAccountnumber(acccountnumber);
         modelAndView.addObject("account", accountRepository.findAll());
+        redirectAttributes.addFlashAttribute("success",
+                "You Have Updated "  + acccountnumber + " Successfully");
         accountRepository.save(account);
         return modelAndView;
 
     }
 
     @RequestMapping(value = "account/delete/{accountid}", method = RequestMethod.GET)
-    public ModelAndView destroy(@PathVariable("accountid") Long accountid){
+    public ModelAndView destroy(@PathVariable("accountid") Long accountid, RedirectAttributes redirectAttributes){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrator/accounts/");
+        Account account = (Account) accountRepository.findById(accountid).orElse(null);
+        redirectAttributes.addFlashAttribute("success",
+                "You Have Deleted The Account Successfully");
         accountRepository.deleteById(accountid);
         return modelAndView;
     }

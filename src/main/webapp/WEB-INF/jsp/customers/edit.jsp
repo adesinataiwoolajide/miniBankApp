@@ -138,6 +138,61 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> List of Saved Customers</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="default-datatable" class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Mnemonic</th>
+                                    <th>Sector</th>
+                                    <th>Phone Number</th>
+
+                                </tr>
+                                </thead>
+
+                                <tfoot>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Mnemonic</th>
+                                    <th>Sector</th>
+                                    <th>Phone Number</th>
+
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <c:forEach var="customers" items="${customer}" varStatus="counter">
+                                    <tr>
+                                        <td>
+                                                ${counter.count}
+                                            <a href="/administrator/customer/delete/${customers.customerid}" class="btn btn-danger"
+                                               onclick="return(confirmToDelete());"><i class="fa fa-trash-o"></i></a>
+                                            <a href="/administrator/customer/edit/${customers.customerid}" class="btn btn-success"
+                                               onclick="return(confirmToEdit());"><i class="fa fa-pencil"></i></a>
+                                            <a href="/administrator/customer/view/${customers.customerid}" class="btn btn-primary"
+                                               onclick=";"><i class="fa fa-list"></i></a>
+                                        </td>
+                                        <td>${customers.customername}</td>
+                                        <td>${customers.mnemonic}</td>
+                                        <td>${customers.sector.sectorname}</td>
+                                        <td>${customers.phonenumber}</td>
+
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <!-- End container-fluid-->
